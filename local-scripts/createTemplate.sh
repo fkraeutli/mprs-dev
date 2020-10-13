@@ -11,20 +11,20 @@ case $type in
 
 
 "page")
-    prefix="$basepage%2F"
+    prefix=$base"page%2F"
     ;;
 "partial")
-    prefix="$basepartial%2F"
+    prefix=$base"partial%2F"
     ;;
 "query")
-    prefix="$basepage%2F"
+    prefix=$base"page%2F"
     ;;
 "queryPartial")
-    prefix="$basepartial%2F"
+    prefix=$base"partial%2F"
     ;;
 *)
     echo "Unknown type. Using default"
-    prefix="$basepartial%2F"
+    prefix=$base"partial%2F"
     ;;
 esac
 
