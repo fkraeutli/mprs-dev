@@ -1,0 +1,5 @@
+version: "3.8"
+services:
+    blazegraph:
+        ports:
+            - $PORT_BLAZEGRAPH:8080

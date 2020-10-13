@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+    autoheal:
+        container_name: ${COMPOSE_PROJECT_NAME}_autoheal
+        image: willfarrell/autoheal
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+    blazegraph:
+        build: ./blazegraph
+        container_name: ${COMPOSE_PROJECT_NAME}_blazegraph
+        healthcheck:
+            test: ["CMD", "curl", "0.0.0.0:8080/blazegraph/sparql?query=SELECT%20%3Fs%20WHERE%20%7B%0A%20%20%3Fs%20%3Fp%20%3Fo%20%0A%7D%20LIMIT%2010"]
+            interval: 1m30s
+            timeout: 10s
+            retries: 2
+            start_period: 40s
+        labels:
+            - autoheal
+        restart: unless-stopped
+        volumes:
+          - blazegraph-data:/blazegraph-data
+    platform:
+        build: ./platform
+        container_name: ${COMPOSE_PROJECT_NAME}_platform
+        ports:
+        - $PORT_PLATFORM:8080
+        volumes:
+        - platform-config:/runtime-data/config
+volumes:
+    blazegraph-data:
+    platform-config:
+    
