@@ -17,7 +17,7 @@ case $type in
     prefix=$base"partial%2F"
     ;;
 "query")
-    prefix=$base"page%2F"
+    prefix=$base"query%2F"
     ;;
 "queryPartial")
     prefix=$base"partial%2F"
