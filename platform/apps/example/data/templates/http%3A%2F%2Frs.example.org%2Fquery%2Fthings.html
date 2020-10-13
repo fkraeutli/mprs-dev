@@ -1,0 +1,4 @@
+SELECT ?subject (GROUP_CONCAT(?type) as ?types) ?label WHERE {
+    ?subject a ?type ;
+        rdfs:label ?label
+} GROUP BY ?subject ?label
