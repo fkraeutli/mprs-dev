@@ -1,2 +1,2 @@
-FROM metaphacts/metaphacts-platform:3.3.2
+FROM researchspace/platform-ci:latest
 COPY ./apps /apps
